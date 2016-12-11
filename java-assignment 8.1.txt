@@ -1,0 +1,46 @@
+package myPack;
+import java.lang.*;
+import java.util.*;
+public class BankAtm {
+	static double atmId, balance;
+	static String bankName, location;
+	public void withdraw(double amt) throws BankATMException{
+		if(balance<10000){
+			throw new BankATMException();
+		}
+		else if(amt>balance){
+			System.out.println("Does not have the sufficient balance");
+			
+		}
+		else{
+			balance= balance- amt;
+			System.out.println("Balance after withdraw :"+ balance);
+		}
+			
+	}
+	public void deposit(double amt){
+		balance= balance + amt;
+		System.out.println("Balance after deposit :"+ balance);
+	}
+	public static void main(String[] args) throws BankATMException{
+		for(int i=3;i>0;i--){
+		Scanner scan1= new Scanner(System.in);
+		System.out.println("Enter the amount in ATM");
+		double balanceAmt1= scan1.nextLong();
+		balance= balanceAmt1;
+		//Scanner scan4= new Scanner(System.in);
+		System.out.println("Enter the amount to be withdrawn");
+		double amtwithdraw= scan1.nextLong();
+			
+		//Scanner scan5= new Scanner(System.in);
+		System.out.println("Enter the amount to be deposited");
+		double amtdeposit= scan1.nextLong();
+		BankAtm atm= new BankAtm();
+		atm.withdraw(amtwithdraw);
+		atm.deposit(amtdeposit);
+		}
+
+		
+		
+	}
+}
